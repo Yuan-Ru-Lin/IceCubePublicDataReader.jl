@@ -1,0 +1,4 @@
+name = "IceCubePublicDataReader"
+version = "0.1.0"
+authors = ["Yuan-Ru Lin <yuanruleonlin@gmail.com>"]
+uuid = "92d88b90-fb16-475b-94b1-bf26618d6898"
