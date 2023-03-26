@@ -34,7 +34,7 @@ function myplot(event::Event)
     plot(pxz, pyz)
 end
 
-open("examples/Level1_IC59_data_Run00115150_Part00000000_Event11.odf") do f
+open(joinpath(pkgdir(IceCubePublicDataReader), "data", "Level1_IC59_data_Run00115150_Part00000000_Event11.odf")) do f
     event = read(f, Event)
     myplot(event)
 end
