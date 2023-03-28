@@ -15,7 +15,7 @@ function colormapping(t)
     end
 end
 
-kw = (; markersize=5, grid=true, xlim=(-1000, 1000), ylim=(-1000, 1000))
+kw = (; markersize=5, grid=true, xlim=(-1000, 1000), ylim=(-1000, 1000), label=nothing)
 
 function myplot(event::Event)
     ts = [hit.t for hit in event.hits]
