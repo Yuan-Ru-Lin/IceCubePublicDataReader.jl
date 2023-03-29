@@ -14,4 +14,4 @@ The package implements I/O for IceCube Public Data whose event bytestream is ill
 
 Please note that there is a typo. The number of triggers (long) takes 8 bytes, instead of 4.
 
-Read the [Demonstration](@ref) for more.
+Read [Demonstration](@ref) for more.
