@@ -1,8 +1,8 @@
 module IceCubePublicDataReader
 
-export Event, read, write
+export Event, read, write, show
 
-import Base: read, write
+import Base: read, write, show
 
 readtype(io, ::Type{T}) where T<:Union{Integer, AbstractFloat} = ntoh(read(io, T))
 writetype(io, t::T) where T<:Union{Integer, AbstractFloat} = write(io, hton(t))
@@ -96,5 +96,24 @@ function write(io::IO, event::Event)
 end
 
 write(io::IO, v::Vector{T}) where T <: Union{Hit, Trigger, Event} = for el in v write(io, el) end
+
+function Base.show(io::IO, mime::MIME"text/plain", event::Event)
+    if !haskey(io, :compact)
+        io = IOContext(io, :compact => true)
+    end
+
+    println(io, "Run ID: ", event.runID)
+    println(io, "Year: ", event.year)
+    println(io, "Start time: ", event.startTime)
+    println(io, "Event lenght: ", event.eventLength, " (μs)")
+
+    println(io, "Triggers:")
+    show(io, mime, event.triggers)
+    println(io)
+
+    println(io, "Hits:")
+    show(io, mime, event.hits)
+    println(io)
+end
 
 end
